@@ -1,5 +1,8 @@
 package lu.atozdigital.api.services.implement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +48,16 @@ public class OrderServiceImplement implements OrderService {
     public OrderDTO saveOrder(OrderDTO orderDTO) {
 		Order order  = convertDtoToOrder(orderDTO);
         return convertOrderToDto(orderRepository.save(order));
+    }
+	
+	@Override
+    public List<OrderDTO> allOrders(){
+        List<Order> orders = orderRepository.findAll();
+        List<OrderDTO> orderDTO = new ArrayList<>();
+        orders.forEach(order -> {
+        	orderDTO.add(convertOrderToDto(order));
+        });
+        return orderDTO;
     }
 
 }

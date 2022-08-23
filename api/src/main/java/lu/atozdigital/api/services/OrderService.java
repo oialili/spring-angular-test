@@ -1,5 +1,6 @@
 package lu.atozdigital.api.services;
 
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -11,4 +12,5 @@ public interface OrderService {
 	public OrderDTO saveOrder(OrderDTO orderDTO);
 	public Order convertDtoToOrder(OrderDTO orderDTO);
     public OrderDTO convertOrderToDto(Order order);
+    public List<OrderDTO> allOrders();
 }
