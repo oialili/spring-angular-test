@@ -1,5 +1,8 @@
 package lu.atozdigital.api.services.implement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import lu.atozdigital.api.dto.ArticleDTO;
@@ -39,4 +42,13 @@ public class ArticleServiceImplement implements ArticleService {
         return convertArticleToDto(articleRepository.save(article));
     }
 
+	@Override
+    public List<ArticleDTO> AllArticles(){
+        List<Article> articles = articleRepository.findAll();
+        List<ArticleDTO> articleDTO = new ArrayList<>();
+        articles.forEach(article -> {
+            articleDTO.add(convertArticleToDto(article));
+        });
+        return articleDTO;
+    }
 }
