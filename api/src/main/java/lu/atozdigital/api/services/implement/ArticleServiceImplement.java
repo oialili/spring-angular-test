@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import lu.atozdigital.api.dto.ArticleDTO;
 import lu.atozdigital.api.entities.Article;
 import lu.atozdigital.api.repositories.ArticleRepository;
 import lu.atozdigital.api.services.ArticleService;
 
+@Service
 public class ArticleServiceImplement implements ArticleService {
 	
 	@Autowired
