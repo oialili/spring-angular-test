@@ -2,6 +2,7 @@ package lu.atozdigital.api.services.implement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,6 +57,10 @@ public class ArticleServiceImplement implements ArticleService {
 	
 	@Override
     public ArticleDTO findArticleById(Long id) {
-        return convertArticleToDto(articleRepository.findById(id).get());
+		Optional<Article> optional = articleRepository.findById(id);
+		if(optional.isPresent()) {
+			return convertArticleToDto(optional.get());
+		}
+		return null;	
     }
 }

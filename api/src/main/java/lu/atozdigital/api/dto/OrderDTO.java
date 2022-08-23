@@ -1,6 +1,9 @@
 package lu.atozdigital.api.dto;
 
 import java.sql.Date;
+import java.util.List;
+
+import lu.atozdigital.api.entities.Article;
 
 
 public class OrderDTO {
@@ -8,7 +11,7 @@ public class OrderDTO {
 	private Long id;
     private String reference;
     private Date date;
-    private String article;
+    private List<Article> articles;
     
 	public Long getId() {
 		return id;
@@ -34,20 +37,20 @@ public class OrderDTO {
 		this.date = date;
 	}
 	
-	public String getArticle() {
-		return article;
+	public List<Article> getArticles() {
+		return articles;
 	}
 	
-	public void setArticle(String article) {
-		this.article = article;
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
 	}
 	
-	public OrderDTO(Long id, String reference, Date date, String article) {
+	public OrderDTO(Long id, String reference, Date date, List<Article> articles) {
 		super();
 		this.id = id;
 		this.reference = reference;
 		this.date = date;
-		this.article = article;
+		this.articles = articles;
 	}
 	
 	public OrderDTO() {

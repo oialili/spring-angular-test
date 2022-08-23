@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lu.atozdigital.api.dto.OrderDTO;
-import lu.atozdigital.api.entities.Article;
 import lu.atozdigital.api.entities.Order;
 import lu.atozdigital.api.repositories.ArticleRepository;
 import lu.atozdigital.api.repositories.OrderRepository;
@@ -25,12 +24,10 @@ public class OrderServiceImplement implements OrderService {
 	@Override
     public Order convertDtoToOrder(OrderDTO orderDTO) {
 		Order order = new Order();
-		Article article = articleRepository.findByName(orderDTO.getArticle());
-		
 		order.setId(order.getId());
 		order.setReference(orderDTO.getReference());
 		order.setDate(orderDTO.getDate());
-		order.setArticle(article);
+		order.setArticles(orderDTO.getArticles());
         return order;
     }
 	
@@ -40,7 +37,7 @@ public class OrderServiceImplement implements OrderService {
 		orderDTO.setId(order.getId());
 		orderDTO.setReference(order.getReference());
 		orderDTO.setDate(order.getDate());
-		orderDTO.setArticle(order.getArticle().getName());    
+		orderDTO.setArticles(order.getArticles());  
         return orderDTO;
     }
 	

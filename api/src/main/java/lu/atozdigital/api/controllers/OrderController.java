@@ -18,7 +18,7 @@ import lu.atozdigital.api.services.OrderService;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping(path = "/order")
+@RequestMapping(path = "/orders")
 public class OrderController {
 	
 	@Autowired
@@ -37,6 +37,10 @@ public class OrderController {
         return orderService.allOrders();
     }
 	
-	
+	@PutMapping(path = "")
+    public Order editOrder(@RequestBody OrderDTO orderDTO) {
+		Order order  = orderService.convertDtoToOrder(orderDTO);
+        return orderRepository.save(order);
+    }
 
 }

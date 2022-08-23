@@ -18,7 +18,7 @@ import lu.atozdigital.api.services.ArticleService;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping(path = "/article")
+@RequestMapping(path = "/articles")
 public class ArticleController {
 	
 	@Autowired
@@ -37,7 +37,11 @@ public class ArticleController {
 	@GetMapping(path ="/{id}")
     public ResponseEntity<ArticleDTO> getArticleById(@PathVariable("id") Long id)  {
 		ArticleDTO articleDTO = articleService.findArticleById(id);
-        return new ResponseEntity<>(articleDTO, HttpStatus.OK);
+		if(articleDTO != null)
+			 return new ResponseEntity<>(articleDTO, HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+       
     }
 	
 
