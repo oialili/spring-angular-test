@@ -51,4 +51,9 @@ public class ArticleServiceImplement implements ArticleService {
         });
         return articleDTO;
     }
+	
+	@Override
+    public ArticleDTO findArticleById(Long id) {
+        return convertArticleToDto(articleRepository.findById(id).get());
+    }
 }

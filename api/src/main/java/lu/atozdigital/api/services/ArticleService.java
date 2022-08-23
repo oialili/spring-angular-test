@@ -13,5 +13,6 @@ public interface ArticleService {
 	public Article convertDtoToArticle(ArticleDTO articleDTO);
     public ArticleDTO convertArticleToDto(Article article);
     public List<ArticleDTO> AllArticles();
+    public ArticleDTO findArticleById(Long id);
 
 }
