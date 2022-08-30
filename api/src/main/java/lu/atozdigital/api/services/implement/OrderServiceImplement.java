@@ -24,7 +24,7 @@ public class OrderServiceImplement implements OrderService {
 	@Override
     public Order convertDtoToOrder(OrderDTO orderDTO) {
 		Order order = new Order();
-		order.setId(order.getId());
+		order.setId(orderDTO.getId());
 		order.setReference(orderDTO.getReference());
 		order.setDate(orderDTO.getDate());
 		order.setArticles(orderDTO.getArticles());
